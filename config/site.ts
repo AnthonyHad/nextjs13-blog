@@ -1,7 +1,7 @@
 export interface SiteConfig {
   siteName: string;
   description: string;
-  currentlyAt: string;
+  currentlyIn: string;
   socialLinks: {
     twitter: string;
     github: string;
@@ -13,7 +13,7 @@ const siteConfig: SiteConfig = {
   siteName: "Explorer",
   description:
     "A minimal and lovely  travel blog which shares experiences and cities around the world",
-  currentlyAt: "Paris",
+  currentlyIn: "Paris",
   socialLinks: {
     twitter: "https://twitter.com/anthonyhadwan_",
     github: "https://github.com/AnthonyHad",
