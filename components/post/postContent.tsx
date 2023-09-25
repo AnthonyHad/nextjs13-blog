@@ -10,7 +10,7 @@ const PostContent = ({ post }: PostContentProps) => {
   return (
     <div className="space-y-2">
       {/* Tags */}
-      <div className=" flex text-sm gap-2 items-center text-neutral-400">
+      <div className=" flex text-xs gap-2 items-center text-neutral-400 @md:text-sm">
         <div
           className={`font-medium ${
             post.category.title === "Cities"
