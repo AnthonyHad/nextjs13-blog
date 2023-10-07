@@ -2,7 +2,6 @@ import CTACard from "@/components/elements/ctaCard";
 import PaddingContainer from "@/components/layout/paddingContainer";
 import PostCard from "@/components/post/postCard";
 import PostList from "@/components/post/postList";
-import { DUMMY_POSTS } from "@/DUMMY_DATA";
 import directus from "@/lib/directus";
 import { notFound } from "next/navigation";
 
@@ -37,14 +36,14 @@ export default async function Home() {
   return (
     <PaddingContainer>
       <main className="h-auto space-y-10">
-        <PostCard post={DUMMY_POSTS[0]} />
+        <PostCard post={posts[0]} />
         <PostList
-          posts={DUMMY_POSTS.filter((_post, index) => index > 0 && index < 3)}
+          posts={posts.filter((_post, index) => index > 0 && index < 3)}
         />
         <CTACard />
-        <PostCard reverse={true} post={DUMMY_POSTS[3]} />
+        <PostCard reverse={true} post={posts[3]} />
         <PostList
-          posts={DUMMY_POSTS.filter((_post, index) => index > 3 && index < 6)}
+          posts={posts.filter((_post, index) => index > 3 && index < 6)}
         />
       </main>
     </PaddingContainer>
