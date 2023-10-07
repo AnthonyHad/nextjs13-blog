@@ -8,6 +8,9 @@ const nextConfig = {
       hostname: "localhost",
       protocol: "http"
     }]
+  },
+  experimental: {
+    serverActions: true,
   }
 }
 

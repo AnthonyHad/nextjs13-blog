@@ -1,7 +1,20 @@
+import directus from "@/lib/directus";
 import Image from "next/image";
 
 /* eslint-disable react/no-unescaped-entities */
-const CTACard = () => {
+const CTACard = async () => {
+  const formAction = async (formData: FormData) => {
+    "use server";
+    try {
+      const email = formData.get("email");
+      await directus.items("subscribers").createOne({
+        email,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className=" relative rounded-md bg-slate-100 py-10 px-6 overflow-hidden">
       {/* Overlay */}
@@ -24,8 +37,13 @@ const CTACard = () => {
           most of the great cities and currentl am in the 🇪🇺 Join me!
         </p>
         {/* Form */}
-        <form className="mt-6 flex items-center gap-2 w-full ">
+        <form
+          action={formAction}
+          className="mt-6 flex items-center gap-2 w-full "
+        >
           <input
+            type="email"
+            name="email"
             placeholder="Write your email"
             className="bg-white/80 text-base rounded-md py-2 px-3 outline-none focus:ring-2 ring-neutral-600 placeholder:text-sm w-full md:w-auto"
           />
