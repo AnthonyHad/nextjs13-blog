@@ -2,17 +2,20 @@ import { Post } from "@/types/collection";
 import Image from "next/image";
 import Link from "next/link";
 import PostContent from "./postContent";
+import { getDictionary } from "@/lib/getDictionary";
 
 interface PostProps {
   post: Post;
   layout?: "vertical" | "horizontal";
   reverse?: boolean;
+  locale: string;
 }
 
 const PostCard = ({
   post,
   layout = "horizontal",
   reverse = false,
+  locale,
 }: PostProps) => {
   return (
     <Link
@@ -21,7 +24,7 @@ const PostCard = ({
           ? "grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
           : "space-y-10"
       }`}
-      href={`/post/${post.slug}`}
+      href={`/${locale}/post/${post.slug}`}
     >
       {/* Post Image */}
       <Image
@@ -34,7 +37,7 @@ const PostCard = ({
         height={300}
       />
       {/* Post Content */}
-      <PostContent post={post} />
+      <PostContent locale={locale} post={post} />
     </Link>
   );
 };

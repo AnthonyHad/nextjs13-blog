@@ -39,9 +39,13 @@ const PostPage = async ({
 }: {
   params: {
     slug: string;
+    lang: string;
   };
 }) => {
   // const post = DUMMY_POSTS.find((post) => post.slug === params.slug);
+
+  const locale = params.lang;
+
   const getPostData = async () => {
     try {
       const post = await directus.items("post").readByQuery({
@@ -77,7 +81,7 @@ const PostPage = async ({
       {/* Container */}
       <div className="space-y-10">
         {/* Post Hero */}
-        <PostHero post={post} />
+        <PostHero locale={locale} post={post} />
         {/* Post body and social share */}
         <div className=" flex gap-10 flex-col md:flex-row">
           <div className="relative">
@@ -103,7 +107,7 @@ const PostPage = async ({
           <PostBody body={post.body} />
         </div>
         {/* CTA Card */}
-        <CTACard />
+        <CTACard locale={locale} />
       </div>
     </PaddingContainer>
   );

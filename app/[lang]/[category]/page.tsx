@@ -40,6 +40,7 @@ const CategoryPage = async ({
 }: {
   params: {
     category: string;
+    lang: string;
   };
 }) => {
   // const category = DUMMY_CATEGORIES.find(
@@ -48,6 +49,7 @@ const CategoryPage = async ({
   // const posts = DUMMY_POSTS.filter(
   //   (post) => post.category.title.toLocaleLowerCase() === params.category
   // );
+  const locale = params.lang;
 
   const getCategoryData = async () => {
     try {
@@ -98,7 +100,7 @@ const CategoryPage = async ({
           {typeCorrectedCategory?.description}
         </p>
       </div>
-      <PostList posts={typeCorrectedCategory.posts} />
+      <PostList locale={locale} posts={typeCorrectedCategory.posts} />
     </PaddingContainer>
   );
 };
