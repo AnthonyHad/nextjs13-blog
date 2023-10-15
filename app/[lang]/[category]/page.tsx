@@ -12,6 +12,8 @@ export const generateStaticParams = async () => {
   //   };
   // });
 
+  // Generate Metadata
+
   try {
     const categories = await directus.items("category").readByQuery({
       filter: {
